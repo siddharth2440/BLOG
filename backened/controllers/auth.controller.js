@@ -15,12 +15,13 @@ export const register = (req,res) =>{
         db.query(q1,[values],(err,data)=>{
             if(err) return res.json(err);
             return res.json(data);
-        })
+        });
     })
 }
 
-export const login = (req,res) =>{
+export const login =async (req,res) =>{
     const q = 'select * from user where email=?';
+    console.log("secret of jwt"+process.env.jwtSecretKey);
     db.query(q,[req.body.email],async (err,data)=>{
         if(data.length == 0) return res.json({"message":"User don't exists"});
         const {password,...others}=data[0]
@@ -28,16 +29,21 @@ export const login = (req,res) =>{
         if(!comparePass){
             return res.json("Invalid Email or password");
         }else{
-            const token = jwt.sign({id:others.id},"jwtsecretKey");
-            console.log(others.id);
-            res.cookie("token",token,{
-                httpOnly:true
-            });
+            // console.log(others.id);
+            const token =await jwt.sign({id:others.id},process.env.jwtSecretKey);
+            // console.log("Token is "+token);
+            // console.log("loginId :- ",others.id);
+            // console.log("JWT secret :-  "+process.env.jwtSecretKey);
+            res.cookie("token",token);
             return res.status(200).json(others)
         }
     })
 }
 
 export const logout = (req,res) =>{
-    return res.cookie("token",null).json({"message":"User is logged out"});    
+    res.cookie("token",null,{
+        maxAge:0,
+        secure:true
+    });
+    return res.json({"message":"User is logged out"});    
 }
