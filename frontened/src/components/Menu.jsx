@@ -33,7 +33,7 @@ const Menu = () => {
         {
             posts.map((el,idx)=>{
                 return (
-                    <div className='flex flex-col items-center w-[100%] justify-center my-3 gap-2'>
+                    <div key={idx} className='flex flex-col items-center w-[100%] justify-center my-3 gap-2'>
                         <img src={el?.img} alt="" className=''/>
                         <span>{el?.title}</span>
                         <button className='mt-4 border border-black px-3 rounded-sm'>Read More</button>

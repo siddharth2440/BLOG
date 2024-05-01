@@ -6,11 +6,18 @@ import bodyparser from "body-parser"
 import morgan from "morgan"
 import { config } from "dotenv"
 import cookieparser from "cookie-parser"
+import cors from "cors"
 const PORT = 3002;
 const app =express();
 
 //configure dotenv files
 config()
+
+//using cors
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}))
 
 //use bodyparser
 app.use(bodyparser.json());

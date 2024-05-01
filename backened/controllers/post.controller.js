@@ -1,7 +1,9 @@
 import {db} from "../db.js"
 export const getPosts = async (req,res) => {
-    const q = req.body.cat?'select * from posts where cat = ?':'select * from posts'
-    db.query(q,[req.params.id],(err,data)=>{
+    console.log(req.query.cat);
+    console.log("reached");
+    const q = req.query.cat?'select * from posts where cat = ?':'select * from posts'
+    db.query(q,[req.query.cat],(err,data)=>{
         return res.json(data);
     })
 }

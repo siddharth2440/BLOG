@@ -7,15 +7,16 @@ import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import NewPost from './pages/NewPost.jsx'
 import AddNewPost from './pages/AddNewPost.jsx'
+import { Routes , Route } from 'react-router-dom'
 function App() {
   return (
-    <>
-      {/* <Home/> */}
-      {/* <Login/> */}
-      {/* <Register/> */}
-      {/* <NewPost/> */}
-      <AddNewPost/>
-    </>
+    <Routes>
+      <Route path='/' element={<Home/>}></Route>
+      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/register' element={<Register/>}></Route>
+      <Route path='/newPost' element={<NewPost/>}></Route>
+      <Route path='/createNewPost' element={<AddNewPost/>}></Route>
+    </Routes>
   )
 }
 
