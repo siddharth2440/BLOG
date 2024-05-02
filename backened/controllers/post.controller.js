@@ -9,11 +9,12 @@ export const getPosts = async (req,res) => {
 }
 
 export const getPost = async (req,res) => {
+    console.log("API call hua hai");
     const q = 'select `title`,`desc`,p.img,`date` from user u join posts p on u.id = p.uid where p.id = ?'
     db.query(q,[req.params.id],(err,data)=>{
         if(err) return res.json(err)
         return res.json(data);
-    })    
+    })
 }
 
 export const addPost = async (req,res) => {

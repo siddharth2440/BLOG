@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className='flex items-center justify-between w-[100%] py-2 px-6 m-auto '>
         <div className='logo'>
-            <Link to={"/"} onClick={(e)=>clickHandler(e,"")}><img src={logo} alt=""  className='h-[5rem] w-auto'/></Link>
+            <Link to={"/"}><img src={logo} onClick={(e)=>clickHandler(e,"")} alt=""  className='h-[5rem] w-auto'/></Link>
         </div>
         <div className='flex items-between justify-center gap-3 px-4 py-4'>
             {

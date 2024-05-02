@@ -5,7 +5,8 @@ import {getPosts,getPost,addPost,deletePost,updatePost} from "../controllers/pos
 //routes of posts
 
 router.get("/",getPosts);
-router.get("/:id",isLoggedIn,getPost);
+// router.get("/:id",isLoggedIn,getPost);
+router.get("/:id",getPost);
 router.post("/",isLoggedIn,addPost);
 router.delete("/:id",isLoggedIn,deletePost);
 router.put("/:id",isLoggedIn,updatePost);
