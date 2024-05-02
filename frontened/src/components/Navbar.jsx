@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from "../assets/logo.png"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../Redux/Slices/post.slice';
 import toast from 'react-hot-toast';
@@ -9,7 +9,7 @@ const Navbar = () => {
     const [nav,setNav] = useState("");
     const dispatch = useDispatch();
     const navLinks = ["art","science","technology","cinema","design","food"];
-    
+    const navigate = useNavigate()    
     const clickHandler =async (e,el) => {
         e.preventDefault();
         setNav(el);
@@ -19,6 +19,7 @@ const Navbar = () => {
             return
         }
         toast.success("Feteched  successfully") 
+        navigate("/"+el);
         return
     }
 
@@ -32,7 +33,7 @@ const Navbar = () => {
             {
                 navLinks.map(el=>{
                     return(
-                        <Link to={"/?cat="+el} onClick={(e)=>clickHandler(e,el)}><p className='capitalize text-[1rem] font-[500]'>{el}</p></Link>
+                        <p className='capitalize text-[1rem] font-[500]'><Link to={"/"+el} onClick={(e)=>clickHandler(e,el)}>{el}</Link></p>
                     )
                 })
             }

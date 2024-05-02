@@ -12,6 +12,13 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Home/>}></Route>
+      <Route path='/art' element={<Home/>}></Route>
+      <Route path='/science' element={<Home/>}></Route>
+      <Route path='/technology' element={<Home/>}></Route>
+      <Route path='/cinema' element={<Home/>}></Route>
+      <Route path='/design' element={<Home/>}></Route>
+      <Route path='/food' element={<Home/>}></Route>
+      
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/register' element={<Register/>}></Route>
       <Route path='/newPost/:id' element={<NewPost/>}></Route>

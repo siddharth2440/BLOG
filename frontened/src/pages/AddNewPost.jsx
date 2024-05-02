@@ -1,7 +1,13 @@
 import React from 'react'
 import Layout from '../layouts/Layout'
+import { useState } from 'react'
 
 const AddNewPost = () => {
+    const [title,setTitle] = useState("");
+    const [desc,setDesc] = useState("");
+    const [image,setImage] = useState("");
+    const [cat,setCat] = useState("");      
+
   return (
     <Layout>
         <form className='grid grid-cols-[50%,30%] my-4'>
