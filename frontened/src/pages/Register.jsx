@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
@@ -13,11 +14,11 @@ const Register = () => {
 
             <button className='bg-[#3f8e8e] text-white rounded-sm mt-6 px-3 py-1'>Register</button>
 
-            <span className='text-[0.8rem]'>Don't you have an account? Register</span>
+            <span className='text-[0.8rem]'>Don't you have an account? <Link className='text-blue-700 text-center underline' to="/login">Login</Link></span>
 
         </form>
     </div>
   )
 }
 
-export default Register
+export default Register;

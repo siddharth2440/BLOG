@@ -8,6 +8,7 @@ import Register from './pages/Register.jsx'
 import NewPost from './pages/NewPost.jsx'
 import AddNewPost from './pages/AddNewPost.jsx'
 import { Routes , Route } from 'react-router-dom'
+import RequireAuth from './components/RequireAuth.jsx'
 function App() {
   return (
     <Routes>
@@ -21,8 +22,14 @@ function App() {
       
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/register' element={<Register/>}></Route>
-      <Route path='/newPost/:id' element={<NewPost/>}></Route>
-      <Route path='/createNewPost' element={<AddNewPost/>}></Route>
+
+      <Route element={<RequireAuth/>}>
+          <Route path='/newPost/:id' element={<NewPost/>}></Route>
+          <Route path='/createNewPost' element={<AddNewPost/>}></Route>
+      </Route>
+      
+      {/* <Route path='/newPost/:id' element={<NewPost/>}></Route>
+      <Route path='/createNewPost' element={<AddNewPost/>}></Route> */}
     </Routes>
   )
 }
