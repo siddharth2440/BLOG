@@ -12,10 +12,17 @@ export const getPosts = createAsyncThunk("/getAllPosts",async ({cat})=>{
 })
 
 export const getPost = createAsyncThunk('/getUniquePost',async ({id})=>{
-    console.log("pahucha kya ?");
+    // console.log("pahucha kya ?");
     const {data} = await axiosInstance.get("/post/"+id);
     // console.log(data);
     return data; 
+})
+
+
+export const createPost = createAsyncThunk("/createNewPost",async ({title,description:desc,img:url,cat})=>{
+    const {data} = await axiosInstance.post("/post",{title:title,description:desc,img:url,cat});
+    // console.log(data);
+    return data;
 })
 const postReducer = createSlice({
     name:"post",

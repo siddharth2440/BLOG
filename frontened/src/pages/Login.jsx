@@ -18,7 +18,7 @@ const Login = () => {
       return;
     }
     toast.success("Logged in successfully");  
-    navigate(-1);
+    navigate("/");
     return;
   }
   return (

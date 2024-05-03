@@ -6,7 +6,7 @@ export const getPosts = async (req,res) => {
     db.query(q,[req.query.cat],(err,data)=>{
         return res.json(data);
     })
-}
+}   
 
 export const getPost = async (req,res) => {
     console.log("API call hua hai");
@@ -20,6 +20,7 @@ export const getPost = async (req,res) => {
 export const addPost = async (req,res) => {
     const {id} = req.user;
     const {title,description,img,cat} = req.body;
+    console.log(title,description,img,cat);
     const date = new Date();
     const q = 'insert into posts (`title`,`desc`,`img`,`date`,`uid`,`cat`) values (?)'
     const values = [title,description,img,`${date.getFullYear()}/${date.getMonth()}/${date.getDay()}`,id,cat];
@@ -35,6 +36,7 @@ export const deletePost = async (req,res) => {
         return res.json(data);
     })
 }
+
 export const updatePost = async (req,res) => {
     const {title,desc,img,cat} = req.body;
     const date = new Date();

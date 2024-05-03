@@ -1,5 +1,6 @@
 import {createAsyncThunk,createSlice} from "@reduxjs/toolkit"
 import axiosInstance from "../../helpers/axiosInstance"
+import toast from "react-hot-toast"
 const initialState = {
     isLoggedIn : false,
     user:JSON.parse(localStorage.getItem("user")) || null
@@ -17,6 +18,15 @@ export const logout = createAsyncThunk("/logout",async ()=>{
     return data;
 })
 
+export const register = createAsyncThunk("/register",async ({username,email,password})=>{
+    const registeration = axiosInstance.post("/auth/register",{username,email,password})
+    toast.promise(registeration,{
+        success:"User Registered Successfully",
+        loading:"Registering...",
+        error:"Unable to register user"
+    })
+    return (await registeration).data;
+});
 
 const userSlice = createSlice({
     name:"userAuth",
